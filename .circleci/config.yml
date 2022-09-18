@@ -2,8 +2,6 @@ version: 2.1
 executors:
   my-custom-executor:
     docker:
-      w = Button ( master, option=value, ... )
-
       - image: cimg/base:stable
         auth:
           # ensure you have first added these secrets
@@ -11,15 +9,16 @@ executors:
           username: $DOCKER_HUB_USER
           password: $DOCKER_HUB_PASSWORD
 jobs:
-  my-job-name:
+  button:
 
     executor: my-custom-executor
     steps:
       - checkout
       - run: |
-          # echo Hello, World!
+          # w = Button ( master, option=value, ... )
+          
 
 workflows:
   my-custom-workflow:
     jobs:
-      - my-job-name
+      - button
